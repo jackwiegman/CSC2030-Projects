@@ -13,7 +13,8 @@
  * @brief Check if number is even or odd.
  *
  * @param[in] num Number to check if even or odd
- * @return true if even, false if odd.
+ * @return the opposite of the num % 2. Returns 1 or 0 which is true if the
+ * number is even and false if not
  */
 bool isEven(int num) { return !(num % 2); }
 
@@ -30,7 +31,7 @@ int main() {
     int num3 = 0;
     int num4 = -29;
     int num5 = -28;
-    int numArr[] = {num1, num2, num3, num4, num5};
+    int numArr[5] = {num1, num2, num3, num4, num5};
 
     for (int i = 0; i < 5; i++) {
         if (isEven(numArr[i])) {
