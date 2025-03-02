@@ -34,62 +34,93 @@ void printMatrix(int rows, int cols, int matrix[rows][cols]);
 void multiplyMatrix(int rows1, int cols1, int matrix1[rows1][cols1], int rows2, int cols2,
                     int matrix2[rows2][cols2], int rowsP, int colsP, int product[rowsP][colsP]);
 
-const int MAX_MATRIX_VALUE = 99;
-const int MAX_MATRIX_DIMENSION = 20;
+const int MAX_MATRIX_VALUE = 99;     /**< Max value of a matrix element. */
+const int MAX_MATRIX_DIMENSION = 20; /**< Max value of matrix rows and columns. */
+
+/**
+ * @brief Runs main loop to multiply matrices.
+ * Initializes matrix dimensions and the matrices themsleves. Then multiplies the matrices and
+ * prints out the result. Runs loop until condition from user to exit.
+ *
+ * @return Integer exit value.
+ */
 int main() {
 
+    /* Declaring integers for all arrays. */
     int matrix1Rows, matrix1Cols, matrix2Rows, matrix2Cols, matrixPRows, matrixPCols;
 
+    /** Main loop, exits from return statements ending the loop, funtion, and program */
     while (1) {
 
+        /* Print program information for the user. */
         puts("This program will multiply two matrices: ");
         puts("Keep in mind, in order to multiply matrices, the column deminsion of the first "
              "matrix must match the row deminsion of the second.");
         puts("Please enter the information for the first matrix.");
 
+        /* getRows() and getCols() returns row value and 0 if they choose to quit. So we can take
+         * the opposite of the value of the assignment to check if we should exit program and run
+         * exit function, returning from main and quitting the program.
+         */
         if (!(matrix1Rows = getRows())) {
             return exitProgram();
         }
-
         if (!(matrix1Cols = getCols())) {
             return exitProgram();
         }
 
+        /**< First matrix with user inputted dimensions. */
         int matrix1[matrix1Rows][matrix1Cols];
 
         /* Populate and print first matrix */
         populateMatrix(matrix1Rows, matrix1Cols, matrix1);
         printMatrix(matrix1Rows, matrix1Cols, matrix1);
 
+        /* M1 cols has to be the same as M2 rows in order to multiply. */
         matrix2Rows = matrix1Cols;
+        /* Let user know M2 Rows is set */
         printf("%s%d%s", "The second matrix will have ", matrix1Cols, " rows.");
 
+        /* Same getCols() idea */
         if (!(matrix2Cols = getCols())) {
             return exitProgram();
         }
 
+        /* Product matrix dimensions where rows equals M1 rows and columns equals M2 columns */
         matrixPRows = matrix1Rows;
         matrixPCols = matrix2Cols;
 
+        /**< Second matrix with user inputted columns */
         int matrix2[matrix2Rows][matrix2Cols];
+
+        /**< Future product matrix with rows dimensions from M1 and columns from M2 */
         int productMatrix[matrix1Rows][matrix2Cols];
 
+        /* Populate and print second matrix */
         populateMatrix(matrix2Rows, matrix2Cols, matrix2);
         printMatrix(matrix2Rows, matrix2Cols, matrix2);
 
+        /* Multiply matrices with output in product matrix */
         multiplyMatrix(matrix1Rows, matrix1Cols, matrix1, matrix2Rows, matrix2Cols, matrix2,
                        matrixPRows, matrixPCols, productMatrix);
 
+        /* Print product matrix */
         puts("The product of the two matrices:");
         printMatrix(matrixPRows, matrixPCols, productMatrix);
     }
     return 0;
 }
 
+/**
+ * @brief Print exit message and return program output.
+ *
+ * @return Program output integer.
+ */
 int exitProgram() {
     puts("Thank you, come again!");
     return 1;
 }
+
 /**
  * @brief Multiplies two matrices into a new, third matrix.
  *
