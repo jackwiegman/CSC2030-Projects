@@ -1,8 +1,25 @@
 /**
- * @file main.c
+ * @file MatrixMultiplication.c
+ * @author Jack Wiegman
+ *
  * @brief Multiply matrices.
  *
- * @author Jack Wiegman
+ * Prompts user for matrix dimensions where the dimensions are between 1 and \ref
+ * MAX_MATRIX_DIMENSION. Prompt for first matrix (M1) rows and columns, then build and print matrix,
+ * exiting if the user inputs a sentinel value. Build the matrix with random values from 0 to \ref
+ * MAX_MATRIX_VALUE. So the matrices can be multiplied, set the column dimensions of the second
+ * matrix (M2) to the row dimensions of the first, then prompt for row dimensions for the second
+ * matrix and build then print it.
+ *
+ * Multiply the matrices by obtaining the dot product of each row and column for the matrices.
+ * Take the Nth row of M1 and the Mth column of M2. These have the same number of elements, so take
+ * the product of M1[n][1] and M2[1][m] summed to M1[n][2] * M2[2][m] and so on for all the elements
+ * in the row/column. This sum will be placed in the resulting matrix (M3) at the element M3[n][m].
+ *
+ * The program will then print the resulting product matrix. The loop will then end, and restart
+ * prompting the user for a matrix dimension. The user will continue to multiply matrices until
+ * they type -1, when prompted, to exit.
+ *
  *
  */
 
@@ -18,7 +35,7 @@ void multiplyMatrix(int rows1, int cols1, int matrix1[rows1][cols1], int rows2, 
                     int matrix2[rows2][cols2], int rowsP, int colsP, int product[rowsP][colsP]);
 
 const int MAX_MATRIX_VALUE = 99;
-const int MAX_MATRIX_DEMENSION = 20;
+const int MAX_MATRIX_DIMENSION = 20;
 int main() {
 
     int matrix1Rows, matrix1Cols, matrix2Rows, matrix2Cols, matrixPRows, matrixPCols;
@@ -161,18 +178,18 @@ int getRows() {
     while (1) {
 
         printf("%s%d%s", "Please enter the number of rows for the matrix from 1 to ",
-               MAX_MATRIX_DEMENSION, " or -1 to eixt: ");
+               MAX_MATRIX_DIMENSION, " or -1 to eixt: ");
         scanf("%d", &input);
 
         if (-1 == input || 0 == input) {
             return 0;
-        } else if (0 < input && input <= MAX_MATRIX_DEMENSION) {
+        } else if (0 < input && input <= MAX_MATRIX_DIMENSION) {
             return input;
         }
 
         puts("Input invalid. Try again.");
     }
-    return MAX_MATRIX_DEMENSION;
+    return MAX_MATRIX_DIMENSION;
 }
 
 /**
@@ -185,15 +202,15 @@ int getCols() {
 
     while (1) {
         printf("%s%d%s", "Please enter the number of columns for the matrix from 1 to ",
-               MAX_MATRIX_DEMENSION, " or -1 to eixt: ");
+               MAX_MATRIX_DIMENSION, " or -1 to eixt: ");
         scanf("%d", &input);
 
         if (-1 == input) {
             return -1;
-        } else if (0 < input && input <= MAX_MATRIX_DEMENSION) {
+        } else if (0 < input && input <= MAX_MATRIX_DIMENSION) {
             return input;
         }
         puts("Input invalid. Try again.");
     }
-    return MAX_MATRIX_DEMENSION;
+    return MAX_MATRIX_DIMENSION;
 }
