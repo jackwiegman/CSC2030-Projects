@@ -1,0 +1,32 @@
+\doxysection{Shuffle\+Deal\+Poker.\+h}
+\hypertarget{ShuffleDealPoker_8h_source}{}\label{ShuffleDealPoker_8h_source}\mbox{\hyperlink{ShuffleDealPoker_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ SHUFFLEDEALPOKER\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SHUFFLEDEALPOKER\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ SUITS\ 4}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ FACES\ 13}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ CARDS\ 52}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{ShuffleDealPoker_8h_ad9ab04601f2cef0a10f7e42b238a06fc}{HANDSIZE}}\ =\ 5;\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ShuffleDealPoker_8h_a47c178d10ca391abcd2581e3d34ae72b}{suitIndex}}\ =\ 0;\ \ \ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ShuffleDealPoker_8h_a3db50d6b91ef18851221da74f40a8834}{faceIndex}}\ =\ 1;\ \ \ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ShuffleDealPoker_8h_a40b271c5e75b98427da238b1f602b9c3}{shuffle}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ wDeck[][FACES]);}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ShuffleDealPoker_8h_a7a0ba17081a509623f34841aeda9abfa}{dealHand}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ wDeck[][FACES],\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hand[][2]);}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ShuffleDealPoker_8h_aa56bb2c9214dc66f701e34d2160c363d}{printHand}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hand[][2],\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *wSuit[SUITS],\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *wFace[FACES]);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ShuffleDealPoker_8h_acb51aa6cf843ec7c47a48645430c89f7}{findPairs}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hand[][2]);}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ShuffleDealPoker_8h_a40532e5ac98e8056e2f4d09134d8940c}{getStraightFlushValue}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hand[][2]);}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ShuffleDealPoker_8h_a1e6e907b7be2b9bddc553b14cd6ff1d5}{sortHand}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hand[][2]);}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ShuffleDealPoker_8h_a96b12fa4151aca4c87c9772b3891659f}{printHandContents}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pairsValue,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ straightFlushValue);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

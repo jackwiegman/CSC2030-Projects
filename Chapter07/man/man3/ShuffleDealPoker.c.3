@@ -1,0 +1,190 @@
+.TH "ShuffleDealPoker.c" 3 "Poker Hands" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ShuffleDealPoker.c \- Card shuffling and dealing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fR#include 'ShuffleDealPoker\&.h'\fP
+.br
+\fR#include <stdio\&.h>\fP
+.br
+\fR#include <stdlib\&.h>\fP
+.br
+\fR#include <time\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmain\fP (void)"
+.br
+.ti -1c
+.RI "void \fBshuffle\fP (unsigned int wDeck[][FACES])"
+.br
+.RI "Shuffle cards in deck to random locations\&. "
+.ti -1c
+.RI "void \fBdealHand\fP (unsigned int wDeck[][FACES], unsigned int hand[][2])"
+.br
+.RI "Deal the top \fBHANDSIZE\fP cards and put them in hand deck\&. "
+.ti -1c
+.RI "void \fBprintHand\fP (unsigned int hand[][2], const char *wSuit[SUITS], const char *wFace[FACES])"
+.br
+.RI "Loops through hand to print each card to console\&. Loops through each "card", represented as an index of the \fBhand\fP array\&. Each card is an array of two integers representing a corresponding index in the \fBwSuit\fP and \fBwFace\fP arrays\&. These indexes contain the name and face of the card\&. "
+.ti -1c
+.RI "unsigned int \fBfindPairs\fP (unsigned int hand[][2])"
+.br
+.RI "Find the number of same face cards (pairs) "
+.ti -1c
+.RI "unsigned int \fBgetStraightFlushValue\fP (unsigned int hand[][2])"
+.br
+.RI "Searches hand for straight/royal straights & flushes\&. Returns hand value\&. "
+.ti -1c
+.RI "void \fBsortHand\fP (unsigned int hand[][2])"
+.br
+.RI "Sort the provided array by face value\&. Insertion sort implementation\&. "
+.ti -1c
+.RI "void \fBprintHandContents\fP (unsigned int pairsValue, unsigned int straightFlushValue)"
+.br
+.RI "Print what kind of poker hands the hand contains; Take in straight/flush and pair values and print output based on value of hand\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const size_t \fBnumHands\fP = 7"
+.br
+.ti -1c
+.RI "const char * \fBsuit\fP [SUITS] = {'Hearts', 'Diamonds', 'Clubs', 'Spades'}"
+.br
+.ti -1c
+.RI "const char * \fBface\fP [FACES]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Card shuffling and dealing\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "void dealHand (unsigned int wDeck[][FACES], unsigned int hand[][2])"
+
+.PP
+Deal the top \fBHANDSIZE\fP cards and put them in hand deck\&. Loops through deck finding card 1 through \fRHANDSIZE\fP then assigns the row and column (representing suit and face) that the card was found in to the next place in the hand array, filling the array with a new hand of \fRHANDSIZE\fP cards\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIwDeck\fP a 2d unsigned integer array of cards in the deck 
+.br
+\fIFACES\fP a constant integer representing the number of faces in the deck\&. 
+.br
+\fIhand\fP a 2d integer array of size [\fBHANDSIZE\fP][2] representing the cards in the hand\&. 
+.RE
+.PP
+
+.SS "unsigned int findPairs (unsigned int hand[][2])"
+
+.PP
+Find the number of same face cards (pairs) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIhand\fP array of cards\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Integer based on value of hand where pair=1, 2 pair=2, 3 of a kind=4, & 4 of a kind=8 
+.RE
+.PP
+
+.SS "unsigned int getStraightFlushValue (unsigned int hand[][2])"
+
+.PP
+Searches hand for straight/royal straights & flushes\&. Returns hand value\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIhand\fP array of cards in the current hand, order irrelevant\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Value is the sum of possible hand combinations where straight=1, flush=2, & royal=4\&. 
+.RE
+.PP
+
+.SS "void printHand (unsigned int hand[][2], const char * wSuit[SUITS], const char * wFace[FACES])"
+
+.PP
+Loops through hand to print each card to console\&. Loops through each "card", represented as an index of the \fBhand\fP array\&. Each card is an array of two integers representing a corresponding index in the \fBwSuit\fP and \fBwFace\fP arrays\&. These indexes contain the name and face of the card\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIhand\fP 2d array containing cards in the hand\&. 
+.br
+\fIwSuit\fP array containing suit values at corresponding locations to hand array values\&. 
+.br
+\fISUITS\fP constant int, number of suits in deck (4)\&. 
+.br
+\fIwFace\fP array containing face values at corresponding locations to hand array values\&. 
+.br
+\fIFACES\fP constant int, number of faces in deck (13)\&. 
+.RE
+.PP
+
+.SS "void printHandContents (unsigned int pairsValue, unsigned int straightFlushValue)"
+
+.PP
+Print what kind of poker hands the hand contains; Take in straight/flush and pair values and print output based on value of hand\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpairsValue\fP Octal value of similar face cards\&. 
+.br
+\fIstraightFlushValue\fP Octal value of straights and flushes in the hand\&. 
+.RE
+.PP
+
+.SS "void shuffle (unsigned int wDeck[][FACES])"
+
+.PP
+Shuffle cards in deck to random locations\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwDeck\fP a 2d array representing the cards in the deck 
+.br
+\fIFACES\fP number of faces in the deck 
+.RE
+.PP
+
+.SS "void sortHand (unsigned int hand[][2])"
+
+.PP
+Sort the provided array by face value\&. Insertion sort implementation\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIhand\fP array containing card values to be sorted\&. 
+.RE
+.PP
+
+.SH "Variable Documentation"
+.PP 
+.SS "const char* face[FACES]"
+\fBInitial value:\fP
+.nf
+= {"Ace",   "Deuce", "Three", "Four", "Five",  "Six", "Seven",
+                           "Eight", "Nine",  "Ten",   "Jack", "Queen", "King"}
+.PP
+.fi
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Poker Hands from the source code\&.

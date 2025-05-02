@@ -1,0 +1,209 @@
+\doxysection{Shuffle\+Deal\+Poker.\+h File Reference}
+\hypertarget{ShuffleDealPoker_8h}{}\label{ShuffleDealPoker_8h}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+
+
+Header file for \doxylink{ShuffleDealPoker_8c}{Shuffle\+Deal\+Poker.\+c}.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ShuffleDealPoker_8h_a0c33b306c165fbae505ec5b3544c7d5d}\label{ShuffleDealPoker_8h_a0c33b306c165fbae505ec5b3544c7d5d} 
+\#define {\bfseries SUITS}~4
+\item 
+\Hypertarget{ShuffleDealPoker_8h_a6e003040c82e93f139714da0e416fb6c}\label{ShuffleDealPoker_8h_a6e003040c82e93f139714da0e416fb6c} 
+\#define {\bfseries FACES}~13
+\item 
+\Hypertarget{ShuffleDealPoker_8h_a51a0d0545516c36db4fc97604f0e9814}\label{ShuffleDealPoker_8h_a51a0d0545516c36db4fc97604f0e9814} 
+\#define {\bfseries CARDS}~52
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ShuffleDealPoker_8h_a40b271c5e75b98427da238b1f602b9c3}{shuffle}} (unsigned int w\+Deck\mbox{[}$\,$\mbox{]}\mbox{[}FACES\mbox{]})
+\begin{DoxyCompactList}\small\item\em Shuffle cards in deck to random locations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ShuffleDealPoker_8h_a7a0ba17081a509623f34841aeda9abfa}{deal\+Hand}} (unsigned int w\+Deck\mbox{[}$\,$\mbox{]}\mbox{[}FACES\mbox{]}, unsigned int hand\mbox{[}$\,$\mbox{]}\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Deal the top \doxylink{ShuffleDealPoker_8h_ad9ab04601f2cef0a10f7e42b238a06fc}{HANDSIZE} cards and put them in hand deck. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ShuffleDealPoker_8h_aa56bb2c9214dc66f701e34d2160c363d}{print\+Hand}} (unsigned int hand\mbox{[}$\,$\mbox{]}\mbox{[}2\mbox{]}, const char \texorpdfstring{$\ast$}{*}w\+Suit\mbox{[}SUITS\mbox{]}, const char \texorpdfstring{$\ast$}{*}w\+Face\mbox{[}FACES\mbox{]})
+\begin{DoxyCompactList}\small\item\em Loops through hand to print each card to console. Loops through each "{}card"{}, represented as an index of the hand array. Each card is an array of two integers representing a corresponding index in the w\+Suit and w\+Face arrays. These indexes contain the name and face of the card. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{ShuffleDealPoker_8h_acb51aa6cf843ec7c47a48645430c89f7}{find\+Pairs}} (unsigned int hand\mbox{[}$\,$\mbox{]}\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Find the number of same face cards (pairs) \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{ShuffleDealPoker_8h_a40532e5ac98e8056e2f4d09134d8940c}{get\+Straight\+Flush\+Value}} (unsigned int hand\mbox{[}$\,$\mbox{]}\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Searches hand for straight/royal straights \& flushes. Returns hand value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ShuffleDealPoker_8h_a1e6e907b7be2b9bddc553b14cd6ff1d5}{sort\+Hand}} (unsigned int hand\mbox{[}$\,$\mbox{]}\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Sort the provided array by face value. Insertion sort implementation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ShuffleDealPoker_8h_a96b12fa4151aca4c87c9772b3891659f}{print\+Hand\+Contents}} (unsigned int pairs\+Value, unsigned int straight\+Flush\+Value)
+\begin{DoxyCompactList}\small\item\em Print what kind of poker hands the hand contains; Take in straight/flush and pair values and print output based on value of hand. \end{DoxyCompactList}\item 
+\Hypertarget{ShuffleDealPoker_8h_a840291bc02cba5474a4cb46a9b9566fe}\label{ShuffleDealPoker_8h_a840291bc02cba5474a4cb46a9b9566fe} 
+int {\bfseries main} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const size\+\_\+t \mbox{\hyperlink{ShuffleDealPoker_8h_ad9ab04601f2cef0a10f7e42b238a06fc}{HANDSIZE}} = 5
+\item 
+const int \mbox{\hyperlink{ShuffleDealPoker_8h_a47c178d10ca391abcd2581e3d34ae72b}{suit\+Index}} = 0
+\item 
+const int \mbox{\hyperlink{ShuffleDealPoker_8h_a3db50d6b91ef18851221da74f40a8834}{face\+Index}} = 1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \doxylink{ShuffleDealPoker_8c}{Shuffle\+Deal\+Poker.\+c}. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ShuffleDealPoker_8h_a7a0ba17081a509623f34841aeda9abfa}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}!dealHand@{dealHand}}
+\index{dealHand@{dealHand}!ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+\doxysubsubsection{\texorpdfstring{dealHand()}{dealHand()}}
+{\footnotesize\ttfamily \label{ShuffleDealPoker_8h_a7a0ba17081a509623f34841aeda9abfa} 
+void deal\+Hand (\begin{DoxyParamCaption}\item[{unsigned int}]{w\+Deck}{\mbox{[}$\,$\mbox{]}\mbox{[}\+FACES\mbox{]}, }\item[{unsigned int}]{hand}{\mbox{[}$\,$\mbox{]}\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Deal the top \doxylink{ShuffleDealPoker_8h_ad9ab04601f2cef0a10f7e42b238a06fc}{HANDSIZE} cards and put them in hand deck. 
+
+Loops through deck finding card 1 through {\ttfamily HANDSIZE} then assigns the row and column (representing suit and face) that the card was found in to the next place in the hand array, filling the array with a new hand of {\ttfamily HANDSIZE} cards.
+
+
+\begin{DoxyParams}{Parameters}
+{\em w\+Deck} & a 2d unsigned integer array of cards in the deck \\
+\hline
+{\em FACES} & a constant integer representing the number of faces in the deck. \\
+\hline
+{\em hand} & a 2d integer array of size \mbox{[}\doxylink{ShuffleDealPoker_8h_ad9ab04601f2cef0a10f7e42b238a06fc}{HANDSIZE}\mbox{]}\mbox{[}2\mbox{]} representing the cards in the hand. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ShuffleDealPoker_8h_acb51aa6cf843ec7c47a48645430c89f7}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}!findPairs@{findPairs}}
+\index{findPairs@{findPairs}!ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+\doxysubsubsection{\texorpdfstring{findPairs()}{findPairs()}}
+{\footnotesize\ttfamily \label{ShuffleDealPoker_8h_acb51aa6cf843ec7c47a48645430c89f7} 
+unsigned int find\+Pairs (\begin{DoxyParamCaption}\item[{unsigned int}]{hand}{\mbox{[}$\,$\mbox{]}\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Find the number of same face cards (pairs) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hand} & array of cards. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer based on value of hand where pair=1, 2 pair=2, 3 of a kind=4, \& 4 of a kind=8 
+\end{DoxyReturn}
+\Hypertarget{ShuffleDealPoker_8h_a40532e5ac98e8056e2f4d09134d8940c}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}!getStraightFlushValue@{getStraightFlushValue}}
+\index{getStraightFlushValue@{getStraightFlushValue}!ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+\doxysubsubsection{\texorpdfstring{getStraightFlushValue()}{getStraightFlushValue()}}
+{\footnotesize\ttfamily \label{ShuffleDealPoker_8h_a40532e5ac98e8056e2f4d09134d8940c} 
+unsigned int get\+Straight\+Flush\+Value (\begin{DoxyParamCaption}\item[{unsigned int}]{hand}{\mbox{[}$\,$\mbox{]}\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Searches hand for straight/royal straights \& flushes. Returns hand value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hand} & array of cards in the current hand, order irrelevant. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value is the sum of possible hand combinations where straight=1, flush=2, \& royal=4. 
+\end{DoxyReturn}
+\Hypertarget{ShuffleDealPoker_8h_aa56bb2c9214dc66f701e34d2160c363d}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}!printHand@{printHand}}
+\index{printHand@{printHand}!ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+\doxysubsubsection{\texorpdfstring{printHand()}{printHand()}}
+{\footnotesize\ttfamily \label{ShuffleDealPoker_8h_aa56bb2c9214dc66f701e34d2160c363d} 
+void print\+Hand (\begin{DoxyParamCaption}\item[{unsigned int}]{hand}{\mbox{[}$\,$\mbox{]}\mbox{[}2\mbox{]}, }\item[{const char \texorpdfstring{$\ast$}{*}}]{w\+Suit}{\mbox{[}\+SUITS\mbox{]}, }\item[{const char \texorpdfstring{$\ast$}{*}}]{w\+Face}{\mbox{[}\+FACES\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Loops through hand to print each card to console. Loops through each "{}card"{}, represented as an index of the hand array. Each card is an array of two integers representing a corresponding index in the w\+Suit and w\+Face arrays. These indexes contain the name and face of the card. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hand} & 2d array containing cards in the hand. \\
+\hline
+{\em w\+Suit} & array containing suit values at corresponding locations to hand array values. \\
+\hline
+{\em SUITS} & constant int, number of suits in deck (4). \\
+\hline
+{\em w\+Face} & array containing face values at corresponding locations to hand array values. \\
+\hline
+{\em FACES} & constant int, number of faces in deck (13). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ShuffleDealPoker_8h_a96b12fa4151aca4c87c9772b3891659f}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}!printHandContents@{printHandContents}}
+\index{printHandContents@{printHandContents}!ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+\doxysubsubsection{\texorpdfstring{printHandContents()}{printHandContents()}}
+{\footnotesize\ttfamily \label{ShuffleDealPoker_8h_a96b12fa4151aca4c87c9772b3891659f} 
+void print\+Hand\+Contents (\begin{DoxyParamCaption}\item[{unsigned int}]{pairs\+Value}{, }\item[{unsigned int}]{straight\+Flush\+Value}{}\end{DoxyParamCaption})}
+
+
+
+Print what kind of poker hands the hand contains; Take in straight/flush and pair values and print output based on value of hand. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pairs\+Value} & Octal value of similar face cards. \\
+\hline
+{\em straight\+Flush\+Value} & Octal value of straights and flushes in the hand. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ShuffleDealPoker_8h_a40b271c5e75b98427da238b1f602b9c3}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}!shuffle@{shuffle}}
+\index{shuffle@{shuffle}!ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+\doxysubsubsection{\texorpdfstring{shuffle()}{shuffle()}}
+{\footnotesize\ttfamily \label{ShuffleDealPoker_8h_a40b271c5e75b98427da238b1f602b9c3} 
+void shuffle (\begin{DoxyParamCaption}\item[{unsigned int}]{w\+Deck}{\mbox{[}$\,$\mbox{]}\mbox{[}\+FACES\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Shuffle cards in deck to random locations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w\+Deck} & a 2d array representing the cards in the deck \\
+\hline
+{\em FACES} & number of faces in the deck \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ShuffleDealPoker_8h_a1e6e907b7be2b9bddc553b14cd6ff1d5}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}!sortHand@{sortHand}}
+\index{sortHand@{sortHand}!ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+\doxysubsubsection{\texorpdfstring{sortHand()}{sortHand()}}
+{\footnotesize\ttfamily \label{ShuffleDealPoker_8h_a1e6e907b7be2b9bddc553b14cd6ff1d5} 
+void sort\+Hand (\begin{DoxyParamCaption}\item[{unsigned int}]{hand}{\mbox{[}$\,$\mbox{]}\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Sort the provided array by face value. Insertion sort implementation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hand} & array containing card values to be sorted. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{ShuffleDealPoker_8h_a3db50d6b91ef18851221da74f40a8834}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}!faceIndex@{faceIndex}}
+\index{faceIndex@{faceIndex}!ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+\doxysubsubsection{\texorpdfstring{faceIndex}{faceIndex}}
+{\footnotesize\ttfamily \label{ShuffleDealPoker_8h_a3db50d6b91ef18851221da74f40a8834} 
+const int face\+Index = 1}
+
+The index of faces in each card array \Hypertarget{ShuffleDealPoker_8h_ad9ab04601f2cef0a10f7e42b238a06fc}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}!HANDSIZE@{HANDSIZE}}
+\index{HANDSIZE@{HANDSIZE}!ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+\doxysubsubsection{\texorpdfstring{HANDSIZE}{HANDSIZE}}
+{\footnotesize\ttfamily \label{ShuffleDealPoker_8h_ad9ab04601f2cef0a10f7e42b238a06fc} 
+const size\+\_\+t HANDSIZE = 5}
+
+Size of poker hand to deal \Hypertarget{ShuffleDealPoker_8h_a47c178d10ca391abcd2581e3d34ae72b}\index{ShuffleDealPoker.h@{ShuffleDealPoker.h}!suitIndex@{suitIndex}}
+\index{suitIndex@{suitIndex}!ShuffleDealPoker.h@{ShuffleDealPoker.h}}
+\doxysubsubsection{\texorpdfstring{suitIndex}{suitIndex}}
+{\footnotesize\ttfamily \label{ShuffleDealPoker_8h_a47c178d10ca391abcd2581e3d34ae72b} 
+const int suit\+Index = 0}
+
+The index of suits in each card array 
