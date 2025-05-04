@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-const size_t numHands = 7;  
+const size_t numHands = 7;
 /* initialize suit array */
 const char *suit[SUITS] = {"Hearts", "Diamonds", "Clubs", "Spades"};
 
@@ -67,7 +67,7 @@ void shuffle(unsigned int wDeck[][FACES]) {
  * @fn void dealHand(unsigned int wDeck[][FACES], unsigned int hand[][2])
  * @brief Deal the top \ref HANDSIZE cards and put them in hand deck.
  *
- * Loops through deck finding card 1 through \p HANDSIZE then assigns the row and column 
+ * Loops through deck finding card 1 through \p HANDSIZE then assigns the row and column
  * (representing suit and face) that the card was found in to the next place in the hand array,
  * filling the array with a new hand of \p HANDSIZE cards.
  *
@@ -82,27 +82,26 @@ void dealHand(unsigned int wDeck[][FACES], unsigned int hand[][2]) {
         /* loop through rows of wDeck */
         for (size_t row = 0; row < SUITS; row++) {
             /* loop through columns of wDeck for current row */
-            for (size_t column = 0; column < FACES; column++) { 
+            for (size_t column = 0; column < FACES; column++) {
                 /* if slot contains current card, display card */
                 if (wDeck[row][column] == card) {
-                    /* printf("%5s of %-8s%c", wFace[column], wSuit[row], 
+                    /* printf("%5s of %-8s%c", wFace[column], wSuit[row],
                             card % 2 == 0 ? '\n' : '\t');  2-column format */
 
                     /* Add row/column to a size 2 array within hand array */
-                    hand[card-1][0] = row;
-                    hand[card-1][1] = column;
+                    hand[card - 1][0] = row;
+                    hand[card - 1][1] = column;
                 }
             }
         }
     }
-
 }
 
 /**
  * @fn void printHand(unsigned int hand[][2], const char *wSuit[SUITS], const char *wFace[FACES])
  * @brief Loops through hand to print each card to console.
- * Loops through each "card", represented as an index of the \ref hand array. Each card is an array of
- * two integers representing a corresponding index in the \ref wSuit and \ref wFace arrays. These
+ * Loops through each "card", represented as an index of the \ref hand array. Each card is an array
+ * of two integers representing a corresponding index in the \ref wSuit and \ref wFace arrays. These
  * indexes contain the name and face of the card.
  *
  * @param hand 2d array containing cards in the hand.
@@ -134,10 +133,10 @@ unsigned int findPairs(unsigned int hand[][2]) {
     const unsigned int threeOfAKindVal = 4;
     const unsigned int fourOfAKindVal = 8;
 
-    unsigned int cardVal = 0; /* Value to represent the current card being compared */
+    unsigned int cardVal = 0;  /* Value to represent the current card being compared */
     unsigned int compCard = 0; /* Face value of temporary card compared to */
-    int sameFaces = 0; /* Track how many of the same face there are in deck */
-    int firstPair = -1; /* Face value of first set of cards to ensure no duplicates */
+    int sameFaces = 0;         /* Track how many of the same face there are in deck */
+    int firstPair = -1;        /* Face value of first set of cards to ensure no duplicates */
 
     /* Loop through hand */
     for (int i = 0; i < HANDSIZE; i++) {
@@ -160,21 +159,21 @@ unsigned int findPairs(unsigned int hand[][2]) {
         }
         /* Add to hand value to value of the pairs to this card & mark that face was counted. */
         switch (sameFaces) {
-            /* Card has one match, so is a pair */
-            case 1: 
-                handValue += pairVal;
-                firstPair = cardVal;
-                break;
-            /* Card has two matches, three of a kind */
-            case 2: 
-                handValue += threeOfAKindVal;
-                firstPair = cardVal;
-                break;
-            /* Card has 3 matches, four of a kind */
-            case 3: 
-                handValue += fourOfAKindVal;
-                firstPair = cardVal;
-                break;
+        /* Card has one match, so is a pair */
+        case 1:
+            handValue += pairVal;
+            firstPair = cardVal;
+            break;
+        /* Card has two matches, three of a kind */
+        case 2:
+            handValue += threeOfAKindVal;
+            firstPair = cardVal;
+            break;
+        /* Card has 3 matches, four of a kind */
+        case 3:
+            handValue += fourOfAKindVal;
+            firstPair = cardVal;
+            break;
         }
         sameFaces = 0;
     }
@@ -191,11 +190,11 @@ unsigned int findPairs(unsigned int hand[][2]) {
  */
 unsigned int getStraightFlushValue(unsigned int hand[][2]) {
 
-    unsigned int handVal = 0; 
-        /* Total value of hand to be returned, with the following values of each hand possibility */
+    unsigned int handVal = 0;
+    /* Total value of hand to be returned, with the following values of each hand possibility */
     const unsigned int straightVal = 1; /* Value to add if hand is a straight */
-    const unsigned int flushVal = 2; /* Value to add if hand is a flush */
-    const unsigned int royalVal = 4; /*Value to add if hand is a royal straight (Ten-Ace) */
+    const unsigned int flushVal = 2;    /* Value to add if hand is a flush */
+    const unsigned int royalVal = 4;    /*Value to add if hand is a royal straight (Ten-Ace) */
 
     unsigned int sortedHand[HANDSIZE][2]; /* Array to place the sorted by face hand */
 
@@ -205,22 +204,21 @@ unsigned int getStraightFlushValue(unsigned int hand[][2]) {
             sortedHand[i][j] = hand[i][j];
         }
     }
-    sortHand(sortedHand); /* Sort the sortedHand array */
+    sortHand(sortedHand);                                /* Sort the sortedHand array */
     unsigned int handSuitInt = sortedHand[0][faceIndex]; /* Value of suit to compare for a flush */
     /* variables to keep state */
     _Bool handIsStraight = true;
     _Bool handIsFlush = true;
     _Bool handIsRoyal = false;
 
-
     /* Loop through hand */
     for (int i = 1; i < HANDSIZE; i++) {
 
         /* Check for a straight by making sure each index is 1 greater than the last */
-        if (sortedHand[i][faceIndex] - sortedHand[i-1][faceIndex] != 1) {
+        if (sortedHand[i][faceIndex] - sortedHand[i - 1][faceIndex] != 1) {
             handIsStraight = false;
 
-            if ((i == 1) && (sortedHand[i][faceIndex] == 9 && sortedHand[i-1][faceIndex] == 0)) { 
+            if ((i == 1) && (sortedHand[i][faceIndex] == 9 && sortedHand[i - 1][faceIndex] == 0)) {
                 /* If first two indicies are ace and 10, it has to be a straight if the other cards
                  * are a straight, so we can keep handIsStraight true and continue. */
                 handIsStraight = true;
@@ -237,9 +235,15 @@ unsigned int getStraightFlushValue(unsigned int hand[][2]) {
     }
 
     /* Check each variable for hand contents and add value if hand contained it */
-    if (handIsStraight) {handVal += straightVal;}
-    if (handIsFlush) {handVal += flushVal;}
-    if (handIsRoyal) {handVal += royalVal;}
+    if (handIsStraight) {
+        handVal += straightVal;
+    }
+    if (handIsFlush) {
+        handVal += flushVal;
+    }
+    if (handIsRoyal) {
+        handVal += royalVal;
+    }
 
     return handVal;
 }
@@ -254,7 +258,7 @@ unsigned int getStraightFlushValue(unsigned int hand[][2]) {
 void sortHand(unsigned int hand[][2]) {
 
     unsigned int holdFace; /* temp variable to store values in */
-    
+
     unsigned int holdSuit; /* temp variable to store values in */
 
     for (int i = 0; i < HANDSIZE; i++) {
@@ -262,11 +266,11 @@ void sortHand(unsigned int hand[][2]) {
             holdFace = hand[j][faceIndex]; /* store variable */
             holdSuit = hand[j][suitIndex];
 
-            if (hand[j-1][faceIndex] > hand[j][faceIndex]) {
-                hand[j][suitIndex] = hand[j-1][suitIndex];
-                hand[j][faceIndex] = hand[j-1][faceIndex];
-                hand[j-1][suitIndex] = holdSuit;
-                hand[j-1][faceIndex] = holdFace;
+            if (hand[j - 1][faceIndex] > hand[j][faceIndex]) {
+                hand[j][suitIndex] = hand[j - 1][suitIndex];
+                hand[j][faceIndex] = hand[j - 1][faceIndex];
+                hand[j - 1][suitIndex] = holdSuit;
+                hand[j - 1][faceIndex] = holdFace;
             }
         }
     }
@@ -283,56 +287,56 @@ void printHandContents(unsigned int pairsValue, unsigned int straightFlushValue)
     _Bool pairsFound = true;
     _Bool straightFlushFound = true;
     switch (pairsValue) {
-        case 0: 
-            pairsFound = false;
-            break;
-        /* One pair found */
-        case 1: 
-            printf("Hand contains one pair!");
-            printf("\n");
-            break;
-        case 2: 
-            printf("Hand contains two pair!");
-            printf("\n");
-            break;
-        case 4: 
-            printf("Hand contains three of a kind!");
-            printf("\n");
-            break;
-        case 5: 
-            printf("Hand contains a full house!");
-            printf("\n");
-            break;
-        case 8: 
-            printf("Hand contains a four of a kind!");
-            printf("\n");
-            break;
+    case 0:
+        pairsFound = false;
+        break;
+    /* One pair found */
+    case 1:
+        printf("Hand contains one pair!");
+        printf("\n");
+        break;
+    case 2:
+        printf("Hand contains two pair!");
+        printf("\n");
+        break;
+    case 4:
+        printf("Hand contains three of a kind!");
+        printf("\n");
+        break;
+    case 5:
+        printf("Hand contains a full house!");
+        printf("\n");
+        break;
+    case 8:
+        printf("Hand contains a four of a kind!");
+        printf("\n");
+        break;
     }
 
     switch (straightFlushValue) {
-        case 0: 
-            straightFlushFound = false;
-            break;
-        case 1: 
-            printf("Hand contains a straight!");
-            printf("\n");
-            break;
-        case 2: 
-            printf("Hand contains a flush!");
-            printf("\n");
-            break;
-        case 3: 
-            printf("Hand contains a straight flush!");
-            printf("\n");
-            break;
-        case 4: 
-            printf("Hand contains a royal straight!");
-            printf("\n");
-            break;
-        case 6: 
-            printf("Hand contains a royal flush!");
-            printf("\n");
-            break;
+    case 0:
+        straightFlushFound = false;
+        break;
+    case 1:
+        printf("Hand contains a straight!");
+        printf("\n");
+        break;
+    case 2:
+        printf("Hand contains a flush!");
+        printf("\n");
+        break;
+    case 3:
+        printf("Hand contains a straight flush!");
+        printf("\n");
+        break;
+    case 4:
+        printf("Hand contains a royal straight!");
+        printf("\n");
+        break;
+    case 6:
+        printf("Hand contains a royal flush!");
+        printf("\n");
+        break;
     }
     printf("Pairs Val: %d\n", pairsValue);
     printf("Straigh Val: %d\n", straightFlushValue);
