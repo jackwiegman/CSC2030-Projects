@@ -1,0 +1,74 @@
+\doxysection{Concatenate\+Strings.\+c File Reference}
+\hypertarget{ConcatenateStrings_8c}{}\label{ConcatenateStrings_8c}\index{ConcatenateStrings.c@{ConcatenateStrings.c}}
+
+
+Concatenate two strings provided by a user.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ConcatenateStrings_8c_a34c8cf77ce7d97ef2cd29c91405ed588}{STRING\+\_\+\+LENGTH\+\_\+\+MAX}}~100
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ConcatenateStrings_8c_aaa6fc385b8e996295bd7fc379e024c93}{get\+Valid\+Input}} (char \texorpdfstring{$\ast$}{*}input\+Word\+String, size\+\_\+t max\+Length)
+\begin{DoxyCompactList}\small\item\em Get input and validate the data, putting valid data into provided string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ConcatenateStrings_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Run main instructions and tests for concatenating strings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concatenate two strings provided by a user. 
+
+Prompt user at the terminal to enter two strings, entered one at a time. Then print the words, both before and after concatenating them, as well as the length of the concatenated word. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ConcatenateStrings_8c_a34c8cf77ce7d97ef2cd29c91405ed588}\index{ConcatenateStrings.c@{ConcatenateStrings.c}!STRING\_LENGTH\_MAX@{STRING\_LENGTH\_MAX}}
+\index{STRING\_LENGTH\_MAX@{STRING\_LENGTH\_MAX}!ConcatenateStrings.c@{ConcatenateStrings.c}}
+\doxysubsubsection{\texorpdfstring{STRING\_LENGTH\_MAX}{STRING\_LENGTH\_MAX}}
+{\footnotesize\ttfamily \label{ConcatenateStrings_8c_a34c8cf77ce7d97ef2cd29c91405ed588} 
+\#define STRING\+\_\+\+LENGTH\+\_\+\+MAX~100}
+
+Max size of a single user inputted string. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ConcatenateStrings_8c_aaa6fc385b8e996295bd7fc379e024c93}\index{ConcatenateStrings.c@{ConcatenateStrings.c}!getValidInput@{getValidInput}}
+\index{getValidInput@{getValidInput}!ConcatenateStrings.c@{ConcatenateStrings.c}}
+\doxysubsubsection{\texorpdfstring{getValidInput()}{getValidInput()}}
+{\footnotesize\ttfamily \label{ConcatenateStrings_8c_aaa6fc385b8e996295bd7fc379e024c93} 
+void get\+Valid\+Input (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{input\+Word\+String}{, }\item[{size\+\_\+t}]{max\+Length}{}\end{DoxyParamCaption})}
+
+
+
+Get input and validate the data, putting valid data into provided string. 
+
+Prompt user to input a string of a max length\+: max\+Length. Then take the stream into input\+Word\+String from stdin, only taking in the \doxylink{ConcatenateStrings_8c_a34c8cf77ce7d97ef2cd29c91405ed588}{STRING\+\_\+\+LENGTH\+\_\+\+MAX} number of characters. Check both if the string is greater than 0 characters with a newline. Also that the string terminates with a newline before the end of the fgets() string so that we know it is within \doxylink{ConcatenateStrings_8c_a34c8cf77ce7d97ef2cd29c91405ed588}{STRING\+\_\+\+LENGTH\+\_\+\+MAX}. If it is, break the loop as we have a valid string being pointed to. If not check if the string is too long or too short.\textquotesingle{}~\newline
+\textquotesingle{}If it\textquotesingle{}s not greater than 1 newline character, give error message for that.\textquotesingle{}~\newline
+\textquotesingle{}If the string isn\textquotesingle{}t too short, loop through stdin until either a \textquotesingle{}\textbackslash{}n\textquotesingle{} or EOF character. This will clear stdin and ready it for new input. Also give the message that the string is too long. After the errors are printed and the stream is clear, the loop runs again, prompting until it recieves valid input.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Word\+String} & Pointer to an array of characters to hold the input string. \\
+\hline
+{\em max\+Length} & Max number of characters allowed in string array. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ConcatenateStrings_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{ConcatenateStrings.c@{ConcatenateStrings.c}!main@{main}}
+\index{main@{main}!ConcatenateStrings.c@{ConcatenateStrings.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{ConcatenateStrings_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Run main instructions and tests for concatenating strings. 
+
+Create two input strings that will be passed to the validate function to be filled with user input one at a time. These arrays have a max size of \doxylink{ConcatenateStrings_8c_a34c8cf77ce7d97ef2cd29c91405ed588}{STRING\+\_\+\+LENGTH\+\_\+\+MAX} and can hold up to that many characters. The array pointers are both passed to the function to fill them with valid input. The program will print the original string info, then go on to concatenate the strings into the result\+String. This is done by copying the first string into the result string, then concatenating the second string onto the result string. The result string is initialized with twice the size of the input strings so that it has the capacity to fit both. The information for the concatenated string is then printed. \texorpdfstring{$<$}{<} Character array of first user inputted string.
+
+\texorpdfstring{$<$}{<} Character array of second user inputted string.
+
+\texorpdfstring{$<$}{<} Character array of input strings concatenated.

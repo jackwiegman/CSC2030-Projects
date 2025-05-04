@@ -1,0 +1,75 @@
+.TH "ConcatenateStrings.c" 3 "String Concatenation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConcatenateStrings.c \- Concatenate two strings provided by a user\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fR#include <stdio\&.h>\fP
+.br
+\fR#include <string\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSTRING_LENGTH_MAX\fP   100"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBgetValidInput\fP (char *inputWordString, size_t maxLength)"
+.br
+.RI "Get input and validate the data, putting valid data into provided string\&. "
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.RI "Run main instructions and tests for concatenating strings\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Concatenate two strings provided by a user\&. 
+
+Prompt user at the terminal to enter two strings, entered one at a time\&. Then print the words, both before and after concatenating them, as well as the length of the concatenated word\&. 
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define STRING_LENGTH_MAX   100"
+Max size of a single user inputted string\&. 
+.SH "Function Documentation"
+.PP 
+.SS "void getValidInput (char * inputWordString, size_t maxLength)"
+
+.PP
+Get input and validate the data, putting valid data into provided string\&. Prompt user to input a string of a max length: \fBmaxLength\fP\&. Then take the stream into \fBinputWordString\fP from stdin, only taking in the \fBSTRING_LENGTH_MAX\fP number of characters\&. Check both if the string is greater than 0 characters with a newline\&. Also that the string terminates with a newline before the end of the fgets() string so that we know it is within \fBSTRING_LENGTH_MAX\fP\&. If it is, break the loop as we have a valid string being pointed to\&. If not check if the string is too long or too short\&.'
+.br
+'If it's not greater than 1 newline character, give error message for that\&.'
+.br
+'If the string isn't too short, loop through stdin until either a '\\n' or EOF character\&. This will clear stdin and ready it for new input\&. Also give the message that the string is too long\&. After the errors are printed and the stream is clear, the loop runs again, prompting until it recieves valid input\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIinputWordString\fP Pointer to an array of characters to hold the input string\&. 
+.br
+\fImaxLength\fP Max number of characters allowed in string array\&. 
+.RE
+.PP
+
+.SS "int main ()"
+
+.PP
+Run main instructions and tests for concatenating strings\&. Create two input strings that will be passed to the validate function to be filled with user input one at a time\&. These arrays have a max size of \fBSTRING_LENGTH_MAX\fP and can hold up to that many characters\&. The array pointers are both passed to the function to fill them with valid input\&. The program will print the original string info, then go on to concatenate the strings into the \fBresultString\fP\&. This is done by copying the first string into the result string, then concatenating the second string onto the result string\&. The result string is initialized with twice the size of the input strings so that it has the capacity to fit both\&. The information for the concatenated string is then printed\&. < Character array of first user inputted string\&.
+
+.PP
+< Character array of second user inputted string\&.
+
+.PP
+< Character array of input strings concatenated\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for String Concatenation from the source code\&.
